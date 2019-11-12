@@ -124,14 +124,14 @@ def get_model(args, experiment_dir=None):
                   metrics=['accuracy'])
     return model, epoch
 
-def get_callbacks(experiment_dir, checkpoint_monitor='val_acc'):
+def get_callbacks(experiment_dir, checkpoint_monitor='val_accuracy'):
     
     callbacks = []
     
     # save model checkpoints
     filepath = os.path.join(experiment_dir, 
                             'checkpoints', 
-                            'checkpoint-epoch_{epoch:03d}-val_acc_{val_acc:.3f}.hdf5')
+                            'checkpoint-epoch_{epoch:03d}-val_acc_{val_accuracy:.3f}.hdf5')
 
     callbacks.append(ModelCheckpoint(filepath, 
                                      monitor=checkpoint_monitor, 
